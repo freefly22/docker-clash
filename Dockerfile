@@ -1,12 +1,13 @@
 FROM debian:10
 
-ARG CLASH_VERSION="v1.8.0"
+ARG CLASH_VERSION="v1.18.0"
 
-ADD https://github.com/Dreamacro/clash/releases/download/$CLASH_VERSION/clash-linux-amd64-$CLASH_VERSION.gz /opt/clash-linux-amd64-$CLASH_VERSION.gz
+## ADD https://github.com/Dreamacro/clash/releases/download/$CLASH_VERSION/clash-linux-amd64-$CLASH_VERSION.gz /opt/clash-linux-amd64-$CLASH_VERSION.gz
 ADD https://cdn.jsdelivr.net/gh/Dreamacro/maxmind-geoip@release/Country.mmdb /root/conf/Country.mmdb
-COPY ./run.bash /bin/run
-COPY ./dl-clash-conf.bash /bin/dl-clash-conf
-COPY ./update-clash-conf.bash /bin/update-clash-conf
+COPY /files/clash-linux-amd64-v1.18.0.gz /opt/clash-linux-amd64-v1.18.0.gz
+COPY /files/run.bash /bin/run
+COPY /files/dl-clash-conf.bash /bin/dl-clash-conf
+COPY /files/update-clash-conf.bash /bin/update-clash-conf
 COPY sources.list /etc/apt/
 
 # 配置文件地址
